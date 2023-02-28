@@ -17,7 +17,7 @@ while (num <= 99 || num >= 1000);
 Console.WriteLine($"From the number {num}, the second digit {SecondNumber(num)}");
 */
 // Task2: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
-
+/*
 void ThreeNumber (int number)
 {
     if(number > 99)
@@ -47,5 +47,19 @@ void ThreeNumber (int number)
 Console.Write("Input Number: ");
 int number = Convert.ToInt32(Console.ReadLine());
 ThreeNumber(number);
+*/
+/* Task3: Напишите программу, которая принимает на вход цифру,
+ обозначающую день недели, и проверяет, является ли этот день выходным.*/
 
-
+void Weekend(int number)
+{
+    if(number == 6 || number == 7)
+        Console.WriteLine("Yes weekend");
+    if(number > 7)
+        Console.WriteLine("ERROR: there are seven days in a week");
+    else
+        Console.WriteLine("Not weekend");
+}
+Console.Write("Input Number: ");
+int number = Convert.ToInt32(Console.ReadLine());
+Weekend(number);
