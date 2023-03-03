@@ -13,7 +13,7 @@ int Number(string message)
     int num;
     do
     {
-        Console.WriteLine(message);
+        Console.Write(message);
         Int32.TryParse(Console.ReadLine(), out num);
     }
     while(num < 10000 || num >= 100000);
@@ -49,3 +49,16 @@ double z2 = Input("Input coordinate z2: ");
 
 Console.WriteLine(Math.Round(Distance(x1,y1,z1,x2,y2,z2),2));
 */
+
+// Task3: Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+/*
+int Number(string message)
+{
+    Console.Write(message);
+    int number = Convert.ToInt32(Console.ReadLine());
+    return number;
+}    
+
+int num = Number("Input number: ");
+for(int i = 1; i <= num; i++)
+Console.WriteLine(Math.Pow(i, 3));*/
