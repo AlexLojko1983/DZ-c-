@@ -1,7 +1,7 @@
 ﻿// Task1: Напишите программу, которая принимает на вход пятизначное число и проверяет, является ли оно палиндромом.
-/*
+
 void Palindrom(int number)
-{    
+{          
     if(number/10000 == number%10 && number/1000%10 == number%100/10) 
         Console.WriteLine($"{number} is polindrom");
     else
@@ -22,7 +22,7 @@ int Number(string message)
 }
 int number = Number("Input five-digital number: ");
 Palindrom(number);
-*/
+
 
 /* Task2: Напишите программу, которая принимает на вход координаты двух точек и 
 находит расстояние между ними в 3D пространстве.*/
