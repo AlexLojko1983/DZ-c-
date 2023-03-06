@@ -52,5 +52,48 @@ int sumNumber = SumNumbers(number);
 Console.WriteLine($"sum of numbers{number} = {sumNumber}"); 
 */
 
-// Task3: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
+// Task3-1: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
+/*
+int[] FillArray(int size)
+{
+int[] arr = new int[size];
 
+for(int i = 0; i < arr.Length; i++)
+{
+    Console.Write($"Input arr{i}: ");
+    arr[i] = Convert.ToInt32(Console.ReadLine());
+}
+return arr;
+}
+
+System.Console.Write("Input size: ");
+int size = Convert.ToInt32(Console.ReadLine());
+int[] array = FillArray(size);
+System.Console.WriteLine($"[{string.Join(", ", array)}]");
+*/
+// Task3-2: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
+/*
+int Number(string message)
+{
+    Console.Write(message);
+    int number = Convert.ToInt32(Console.ReadLine());
+    return number;
+}
+
+int[] FillArray(int size, int minDigit, int maxDigit)
+{
+int[] arr = new int[size];
+Random rnd = new Random();
+for(int i = 0; i < arr.Length; i++)
+{
+arr[i] = rnd.Next(minDigit, maxDigit);
+}
+return arr;
+}
+
+int size = Convert.ToInt32(Number("Input size: "));
+int minDigit = Convert.ToInt32(Number("Input minDigit: "));
+int maxDigit = Convert.ToInt32(Number("Input maxDigit: "));
+int[] array = FillArray(size, minDigit, maxDigit);
+System.Console.WriteLine($"[{string.Join(", ", array)}]");
+*/
