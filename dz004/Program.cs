@@ -12,7 +12,11 @@ int Number(string message)
 
 int Degree(int number, int degree)
 {
-    int result = Convert.ToInt32(Math.Pow(number, degree));
+    int result = 1;
+    for(int i =1; i <= degree; i++)
+    {
+        result *= number;
+    }
     return result;
 }
 
