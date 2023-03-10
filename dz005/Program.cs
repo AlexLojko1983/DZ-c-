@@ -93,13 +93,13 @@ int Number(string message)
     return number;
 }
 
-double[] FillArray(int size)
+double[] FillArray(int size, int minDigit, int maxDigit)
 {
 double[] arr = new double[size];
 Random rnd = new Random();
 for(int i = 0; i < arr.Length; i++)
 {
-arr[i] = Math.Round(rnd.NextDouble(), 1);
+arr[i] = Math.Round(rnd.NextDouble(), 1) + rnd.Next(minDigit,maxDigit);
 }
 return arr;
 }
@@ -123,9 +123,12 @@ double Range(double[] arr)
 }
 
 int size = Number("Input size array: ");
+int minDigit = Number("Input minimum array number: ");
+int maxDigit = Number("Input maximum array number: ");
 
-double[] arr = FillArray(size);
+double[] arr = FillArray(size, minDigit, maxDigit);
 
 double range = Math.Round(Range(arr), 1);
 
 System.Console.WriteLine($"element range in [{string.Join("_ ", arr)}] = {range}");
+
