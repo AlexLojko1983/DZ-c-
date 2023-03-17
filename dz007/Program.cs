@@ -54,7 +54,7 @@ PrintMatrix(matrix);
 8 4 2 4
 17 -> такого числа в массиве нет
 */
-
+/*
 int[,] FillMatrixWithRandom()
 {
     int[,] array = new int[5, 6];
@@ -125,7 +125,7 @@ Elemens(matrix, n, m);
 
 int k = Number("Input number: ");
 FindElemens(matrix, k);
-
+*/
 
 /*
 Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
@@ -143,10 +143,37 @@ int[,] FillMatrixWithRandom(int row, int column)
     {
         for (int j = 0; j < column; j++)
         {
-            array[i, j] = rnd.Next(0, 10);
+            array[i, j] = rnd.Next(-10, 20);
         }
     }
     return array;
+}
+
+void ArithmeticMean(int[,] matrix)
+{
+   int num =0;
+   for (int i = 0; i < matrix.GetLength(1); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(0); j++)
+        {                
+            num += matrix[j,i];            
+        }
+        double arimean = Math.Round(Convert.ToDouble(num) / Convert.ToDouble(matrix.GetLength(1)), 1);
+        System.Console.Write($"{arimean} \t");
+        num = 0;        
+    } 
+}
+
+void PrintMatrix(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write($"{array[i,j]} \t");
+        }
+        Console.WriteLine();
+    }
 }
 
 int Number(string message)
@@ -156,3 +183,10 @@ int Number(string message)
     return number;
 }
 
+
+int n = Number("Input row number: ");
+int m = Number("Input colum number: ");
+int[,] matrix = FillMatrixWithRandom(n,m);
+PrintMatrix(matrix);
+System.Console.WriteLine();
+ArithmeticMean(matrix);
