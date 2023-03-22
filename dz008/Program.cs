@@ -220,7 +220,7 @@ System.Console.WriteLine();
 Результирующая матрица будет:
 18 20
 15 18*/
-
+/*
 int[,] FillMatrixWithRandom(int row, int column)
 {
     int[,] array = new int[row, column];
@@ -281,8 +281,6 @@ void MultiplicationMatrix(int[,] array1, int[,] array2)
         System.Console.WriteLine("Нельзя перемножить !!!");
     
 }
-        
-
 
 int n1 = Number("Input row number: ");
 int m1 = Number("Input colum number: ");
@@ -295,3 +293,185 @@ int[,] matrix1 = FillMatrixWithRandom(n2,m2);
 PrintMatrix(matrix1);
 System.Console.WriteLine();
 MultiplicationMatrix(matrix,matrix1);
+*/
+
+/*Задача 59: Задайте двумерный массив из целых чисел. Напишите программу, которая удалит строку и столбец, 
+на пересечении которых расположен наименьший элемент массива.
+Например, задан массив:
+1 4 7 2
+5 9 2 3
+8 4 2 4
+5 2 6 7
+Наименьший элемент - 1, на выходе получим 
+следующий массив:
+9 4 2
+2 2 6
+3 4 7 */
+/*
+int[,] FillMatrixWithRandom(int row, int column)
+{
+    int[,] array = new int[row, column];
+    Random rnd = new Random();
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < column; j++)
+        {
+            array[i, j] = rnd.Next(0, 10);
+        }
+    }
+    return array;
+}
+void PrintMatrix(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write($"{array[i, j]} \t");
+        }
+        Console.WriteLine();
+    }
+}
+int FindMinMatrix(int[,] matrix)
+{
+    int min = matrix[0, 0];
+    int k = 0;
+    int l = 0;
+
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            if (min > matrix[i, j])
+            {
+                min = matrix[i, j];
+                k = i;
+                l = j;
+            }
+        }
+    }
+    return k;
+}
+int FindMinMatrix1(int[,] matrix)
+{
+    int min = matrix[0, 0];
+    int k = 0;
+    int l = 0;
+
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            if (min > matrix[i, j])
+            {
+                min = matrix[i, j];
+                k = i;
+                l = j;
+            }
+        }
+    }
+    return l;
+}
+
+int[,] FindMatrix(int[,] matrix, int k, int l)
+{
+    int[,] newarr = new int[matrix.GetLength(0) - 1, matrix.GetLength(1) - 1];    
+    int m = 0;
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        int n = 0;
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {            
+            if (i != k && j != l)
+            {
+                newarr[m,n] = matrix[i,j];
+                n ++;
+            }            
+        }
+        if(k != i)
+            m ++;
+    }
+    return newarr;
+}
+
+
+int Number(string message)
+{
+    Console.Write(message);
+    int number = Convert.ToInt32(Console.ReadLine());
+    return number;
+}
+int n = Number("Input row number: ");
+int m = Number("Input colum number: ");
+int[,] matrix = FillMatrixWithRandom(n, m);
+PrintMatrix(matrix);
+System.Console.WriteLine();
+int k = FindMinMatrix(matrix);
+int l = FindMinMatrix1(matrix);
+System.Console.WriteLine($"{k} , {l}");
+System.Console.WriteLine();
+int[,] newarr = FindMatrix(matrix, k, l);
+PrintMatrix(newarr);
+*/
+
+/*  Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+Например, на выходе получается вот такой массив:
+01 02 03 04
+12 13 14 05
+11 16 15 06
+10 09 08 07
+*/
+
+int[,] FillMatrixWithRandom(int row, int column)
+{
+    int[,] array = new int[row, column];
+    int el = 1;    
+    for(int j =0; j < array.GetLength(1); j++)
+    {
+        array[0,j] = el;
+        el ++;        
+    }
+
+    for(int i = 1; i < array.GetLength(0); i++)
+    {
+        array[i,column-1] = el;
+        el ++;
+    }
+    
+    for( int j = column-2; j >= 0; j--)
+    {
+        array[row-1,j] = el;
+        el ++;
+    }
+
+    for(int i = row-2; i > 0; i--)
+    {
+        array[i,0] = el;
+        el ++;
+    }
+    return array;
+}
+
+void PrintMatrix(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write($"{array[i, j]} \t");
+        }
+        Console.WriteLine();
+    }
+}
+
+int Number(string message)
+{
+    Console.Write(message);
+    int number = Convert.ToInt32(Console.ReadLine());
+    return number;
+}
+
+int n = Number("Input row number: ");
+int m = Number("Input colum number: ");
+int[,] matrix = FillMatrixWithRandom(n, m);
+PrintMatrix(matrix);
