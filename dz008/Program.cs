@@ -156,7 +156,7 @@ System.Console.WriteLine($"Наименьшая сумма элементов в
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)
 */
-
+/*
 int Number(string message)
 {
     Console.Write(message);
@@ -211,3 +211,87 @@ int h = Number("Input height number: ");
 int[,,] matrix = FillMatrixWithRandom(n,m,h);
 PrintMatrix(matrix);
 System.Console.WriteLine();
+*/
+
+/* Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+Например, даны 2 матрицы:
+2 4 | 3 4
+3 2 | 3 3
+Результирующая матрица будет:
+18 20
+15 18*/
+
+int[,] FillMatrixWithRandom(int row, int column)
+{
+    int[,] array = new int[row, column];
+    Random rnd = new Random();
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            array[i, j] = rnd.Next(1, 6);
+        }
+    }
+    return array;
+}
+int Number(string message)
+{
+    Console.Write(message);
+    int number = Convert.ToInt32(Console.ReadLine());
+    return number;
+}
+void PrintMatrix(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write($"{array[i,j]} \t");
+        }
+        Console.WriteLine();
+    }
+}
+void MultiplicationMatrix(int[,] array1, int[,] array2)
+{
+
+    if (array1.GetLength(1) == array2.GetLength(0))
+    {    
+        int[,] resultarray = new int[array1.GetLength(0), array2.GetLength(1)];
+        int i1 = 0;    
+        for (int i = 0; i < resultarray.GetLength(0); i++)
+        {
+            int j2 = 0;        
+            for (int j = 0; j < resultarray.GetLength(1); j++)
+            {
+                int j1 = 0;
+                int i2 = 0;           
+                while(j1 < array1.GetLength(1))
+                {
+                    resultarray[i, j] += array1[i1,j1]*array2[i2,j2];
+                    j1++;
+                    i2++;
+                }            
+                j2++;     
+            }
+            i1++;
+        }
+        PrintMatrix(resultarray);
+    }
+    else    
+        System.Console.WriteLine("Нельзя перемножить !!!");
+    
+}
+        
+
+
+int n1 = Number("Input row number: ");
+int m1 = Number("Input colum number: ");
+int[,] matrix = FillMatrixWithRandom(n1,m1);
+PrintMatrix(matrix);
+System.Console.WriteLine();
+int n2 = Number("Input row number: ");
+int m2 = Number("Input colum number: ");
+int[,] matrix1 = FillMatrixWithRandom(n2,m2);
+PrintMatrix(matrix1);
+System.Console.WriteLine();
+MultiplicationMatrix(matrix,matrix1);
