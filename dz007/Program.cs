@@ -135,6 +135,7 @@ FindElemens(matrix, k);
 8 4 2 4
 Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 */
+/*
 int[,] FillMatrixWithRandom(int row, int column)
 {
     int[,] array = new int[row, column];
@@ -190,3 +191,4 @@ int[,] matrix = FillMatrixWithRandom(n,m);
 PrintMatrix(matrix);
 System.Console.WriteLine();
 ArithmeticMean(matrix);
+*/
