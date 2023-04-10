@@ -20,6 +20,7 @@
 void NewArr(string [] arr)
 {
     string [] arr1 = Array.Empty<string>();
+    string [] newarr = Array.Empty<string>();
     if (arr.Length == 0)
     {        
         bool a = false;
@@ -36,10 +37,32 @@ void NewArr(string [] arr)
                 a = true;
             }
             i++;
+        } 
+        System.Console.WriteLine($"[{string.Join(", ", arr1)}]");
+        
+        foreach(string el in arr1)
+        {
+            if(el.Length < 4)
+            {
+                newarr = newarr.Append(el).ToArray();
+            }
+        }
+               
+    }
+    else
+    {      
+        foreach(string el in arr)
+        {
+            if(el.Length < 4)
+            {
+                newarr = newarr.Append(el).ToArray();
+            }
         }        
-    }   
-    System.Console.WriteLine($"[{string.Join(", ", arr1)}]");
+    }
+    System.Console.WriteLine($"[{string.Join(", ", newarr)}]");
 }
 
-string [] arr = Array.Empty<string>();
+// string [] arr = Array.Empty<string>();
+string [] arr = new string[] {"Hello", "2", "world", ":-)"};
+
 NewArr(arr);
