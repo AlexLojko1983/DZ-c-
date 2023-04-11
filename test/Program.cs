@@ -17,52 +17,57 @@
 [“Russia”, “Denmark”, “Kazan”] → []
 */
 
-void NewArr(string [] arr)
+string [] CreationArr()
 {
     string [] arr1 = Array.Empty<string>();
-    string [] newarr = Array.Empty<string>();
-    if (arr.Length == 0)
-    {        
-        bool a = false;
-        while(a == false)
-        {  
-            int i = 0;               
-            Console.Write($"Input arr[i]: ");
-            string arr_i = Console.ReadLine();            
-            arr1 = arr1.Append(arr_i).ToArray();          
-            Console.WriteLine($"another element?[Yes/No] ");
-            string b = Console.ReadLine();
-            if(b == "N" || b == "No" || b == "n" || b == "no")
-            {
-                a = true;
-            }
-            i++;
-        } 
-        System.Console.WriteLine($"[{string.Join(", ", arr1)}]");
-        
-        foreach(string el in arr1)
+    bool a = false;
+    while(a == false)
+    {  
+        int i = 0;               
+        Console.Write($"Input arr[i]: ");
+        string arr_i = Console.ReadLine();            
+        arr1 = arr1.Append(arr_i).ToArray();          
+        Console.WriteLine($"another element?[Yes/No] ");
+        string b = Console.ReadLine();
+        if(b == "N" || b == "No" || b == "n" || b == "no")
         {
-            if(el.Length < 4)
-            {
-                newarr = newarr.Append(el).ToArray();
-            }
+            a = true;
         }
-               
+        i++;
+    }
+    return arr1; 
+}
+
+string [] FindElArr(string [] arr)
+{
+    string [] newarr = Array.Empty<string>();
+    foreach(string el in arr)
+    {
+        if(el.Length < 4)
+        {
+            newarr = newarr.Append(el).ToArray();
+        }
+    }
+    return newarr;
+}
+
+void NewArr(string [] arr)
+{    
+    string [] newarr = Array.Empty<string>();
+    if (arr.Length < 1)
+    {    
+        string [] arr1 = CreationArr();
+        System.Console.WriteLine($"[{string.Join(", ", arr1)}]");
+        newarr = FindElArr(arr1);               
     }
     else
-    {      
-        foreach(string el in arr)
-        {
-            if(el.Length < 4)
-            {
-                newarr = newarr.Append(el).ToArray();
-            }
-        }        
+    {
+        System.Console.WriteLine($"[{string.Join(", ", arr)}]"); 
+        newarr = FindElArr(arr);
     }
-    System.Console.WriteLine($"[{string.Join(", ", newarr)}]");
+    System.Console.WriteLine($"newarr = [{string.Join(", ", newarr)}]");
 }
 
 // string [] arr = Array.Empty<string>();
 string [] arr = new string[] {"Hello", "2", "world", ":-)"};
-
 NewArr(arr);
