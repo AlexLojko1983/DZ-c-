@@ -19,14 +19,14 @@
 
 string [] CreationArr()
 {
-    string [] arr1 = Array.Empty<string>();
+    string [] arr = Array.Empty<string>();
     bool a = false;
     while(a == false)
     {  
         int i = 0;               
         Console.Write($"Input arr[i]: ");
         string arr_i = Console.ReadLine();            
-        arr1 = arr1.Append(arr_i).ToArray();          
+        arr = arr.Append(arr_i).ToArray();          
         Console.WriteLine($"another element?[Yes/No] ");
         string b = Console.ReadLine();
         if(b == "N" || b == "No" || b == "n" || b == "no")
@@ -35,7 +35,7 @@ string [] CreationArr()
         }
         i++;
     }
-    return arr1; 
+    return arr; 
 }
 
 string [] FindElArr(string [] arr)
@@ -68,6 +68,6 @@ void NewArr(string [] arr)
     System.Console.WriteLine($"newarr = [{string.Join(", ", newarr)}]");
 }
 
-// string [] arr = Array.Empty<string>();
-string [] arr = new string[] {"Hello", "2", "world", ":-)"};
+string [] arr = Array.Empty<string>();
+// string [] arr = new string[] {"Hello", "2", "world", ":-)"};
 NewArr(arr);
